@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * @file
+ * Adds hopscotch demo to dkan.
+ */
+
+/**
+ * Implements hook_page_build().
+ */
+function nucivic_data_hopscotch_page_build() {
+  
+  drupal_add_js(drupal_get_path('module', 'nucivic_data_hopscotch') . '/hopscotch/dist/js/hopscotch.js');
+  drupal_add_js(drupal_get_path('module', 'nucivic_data_hopscotch') . '/nucivic_data_hopscotch.js');
+  
+  drupal_add_css(drupal_get_path('module', 'nucivic_data_hopscotch') . '/hopscotch/dist/css/hopscotch.css');
+  drupal_add_css(drupal_get_path('module', 'nucivic_data_hopscotch') . '/nucivic_data_hopscotch.css');
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function nucivic_data_hopscotch_block_info() {
+  $blocks['nucivic_data_hopscotch_one'] = array(
+    'info' => t('NuCivic Hopscoth Uno'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function nucivic_data_hopscotch_block_view($delta) {
+  $block = array();
+
+  switch ($delta) {
+    case 'nucivic_data_hopscotch_one':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => nucivic_data_hopscotch_content(),
+        '#attached' => array(
+          'css' => array(
+            drupal_get_path('module', 'nucivic_data_hopscotch') . '/hopscotch/dist/css/hopscotch.css',
+            drupal_get_path('module', 'nucivic_data_hopscotch') . '/nucivic_data_hopscotch.css',
+          ),
+          'js' => array(
+            drupal_get_path('module', 'nucivic_data_hopscotch') . '/hopscotch/dist/js/hopscotch.js',
+            drupal_get_path('module', 'nucivic_data_hopscotch') . '/nucivic_data_hopscotch.js',
+          ),
+        ),
+      );
+      break;
+
+  }
+  return $block;
+}
+
+
+/**
+ * Embeds hopscotch ride.
+ */
+function nucivic_data_hopscotch_content() {
+ return '';
+}

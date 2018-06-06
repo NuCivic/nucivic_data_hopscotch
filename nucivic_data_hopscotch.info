@@ -1,0 +1,4 @@
+name = NuCivic Hopscoth
+description = Provides integration with <a href="http://www.zurb.com/playground/jquery-hopscotch-feature-tour-plugin">Zurb Hopscoth</a> jQuery plugin for creating site tours of html elements.
+package = DKAN
+core = 7.x
